@@ -35,7 +35,7 @@ layout {
         proportion 0.66667
     }
 
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 1.0; }
     focus-ring {
         off
     }
@@ -59,7 +59,7 @@ screenshot-path "~/images/screenshots/screenshot_from_%Y-%m-%d_%H-%M-%S.png"
 // screenshot-path null
 
 animations {
-    // off
+    off
     slowdown 0.75
 }
 
@@ -75,38 +75,8 @@ window-rule {
 }
 
 window-rule {
-    match app-id="foot"
-    default-column-width { proportion 0.5; }
-}
-
-window-rule {
-    match app-id="librewolf"
-    default-column-width { proportion 1.0; }
-}
-
-window-rule {
-    match app-id="Godot"
-    default-column-width { proportion 1.0; }
-}
-
-window-rule {
-    match app-id="steam"
-    default-column-width { proportion 0.5; }
-}
-
-window-rule {
-    match app-id="steam"  title="Steam"
-    default-column-width { proportion 0.33334; }
-}
-
-window-rule {
-    match app-id="steam" title="Friends List"
-    default-column-width { proportion 0.16667; }
-}
-
-window-rule {
-    match app-id="discord"
-    default-column-width { proportion 0.66667; }
+    match app-id="keepassxc"
+    default-column-width { proportion 0.3; }
 }
 
 binds {
