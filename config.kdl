@@ -1,0 +1,232 @@
+input {
+    keyboard {
+        xkb {
+            layout "es"
+            options "ctrl:nocaps"
+        }
+            repeat-delay 200
+            repeat-rate 40
+    }
+
+    mouse {
+        accel-profile "flat"
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+/-output "eDP-1" {
+    mode "1920x1080@60"
+    scale 1.0
+}
+
+cursor {
+xcursor-theme "Adwaita"
+xcursor-size 12
+}
+
+layout {
+    gaps 0
+    center-focused-column "never"
+    preset-column-widths {
+        proportion 0.33334
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+    focus-ring {
+        off
+    }
+
+    border {
+        off
+    }
+
+}
+
+spawn-at-startup "mako"
+spawn-sh-at-startup "wal -qnetR && wbg ~/wallpapers/francesco-paolo-michetti_springtime-and-love_1878.jpg"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/images/screenshots/screenshot_from_%Y-%m-%d_%H-%M-%S.png"
+// screenshot-path null
+
+animations {
+    // off
+    slowdown 0.75
+}
+
+window-rule {
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    open-floating true
+    default-column-width { proportion 0.33334; }
+}
+
+window-rule {
+    match app-id="KeePassXC"
+    block-out-from "screen-capture"
+}
+
+window-rule {
+    match app-id="foot"
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="librewolf"
+    default-column-width { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="Godot"
+    default-column-width { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="steam"
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="steam"  title="Steam"
+    default-column-width { proportion 0.33334; }
+}
+
+window-rule {
+    match app-id="steam" title="Friends List"
+    default-column-width { proportion 0.16667; }
+}
+
+window-rule {
+    match app-id="discord"
+    default-column-width { proportion 0.66667; }
+}
+
+binds {
+
+    Mod+Return { spawn "foot"; }
+    Mod+P { spawn "fuzzel"; }
+
+    Mod+B { spawn "zen"; }
+
+    Mod+D { spawn-sh "open_document"; }
+
+    Mod+N { spawn-sh "manage_notes -j"; }
+    Mod+Shift+N { spawn-sh "manage_notes"; }
+    Mod+Ctrl+N { spawn-sh "manage_notes -n"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Escape repeat=false { close-window; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Shift+Down  { move-window-down; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Left { consume-or-expel-window-left; }
+    Mod+Shift+Right { consume-or-expel-window-right; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+H { consume-or-expel-window-left; }
+    Mod+Shift+L { consume-or-expel-window-right; }
+
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+H     { move-column-left; }
+    Mod+Ctrl+L     { move-column-right; }
+
+    Mod+Backspace { focus-column-first; }
+    Mod+Shift+Backspace  { focus-column-last; }
+    Mod+Ctrl+Backspace { move-column-to-first; }
+    Mod+Ctrl+Shift+Backspace  { move-column-to-last; }
+
+    Mod+Ctrl+Shift+K         { move-workspace-up; }
+    Mod+Ctrl+Shift+J         { move-workspace-down; }
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+Shift+WheelScrollDown      cooldown-ms=150 { focus-column-right; }
+    Mod+Shift+WheelScrollUp        cooldown-ms=150 { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+
+
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Plus { set-column-width "+10%"; }
+
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Plus { set-window-height "+10%"; }
+
+    Mod+Space       { toggle-window-floating; }
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+
+    Mod+T { toggle-column-tabbed-display; }
+
+    Mod+S { screenshot; }
+    Mod+Ctrl+S { screenshot-screen; }
+    Mod+Shift+S { screenshot-window; }
+
+    Mod+Ctrl+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Shift+Escape { quit; }
+}
+
+gestures {
+
+    hot-corners {
+        off
+
+    }
+}
